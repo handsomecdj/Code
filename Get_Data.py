@@ -24,6 +24,6 @@ def get_epidemic_data():
 #输出数据
     print("全国确诊"+total_number,"境外输入"+aboard_number,"治愈人数"+cure_number,"死亡人数"+death_number)
 
-''' test'''
+''' testsd'''
 get_epidemic_data()
 
