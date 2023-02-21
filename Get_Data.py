@@ -1,5 +1,5 @@
-import time
 import pymysql
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
@@ -9,7 +9,6 @@ options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
 driver.get("https://m.111.com.cn/yyw/activities/broadcast/#/home")
 
-time.sleep(2)
 
 '''
 连接至阿里云服务器搭建的mysql数据库
@@ -41,10 +40,11 @@ class GetEpidemicData:
     #死亡人数
         death_number = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[2]/ul[2]/li[1]/div[2]/div[4]/div[2]').text
     #更新数据库数据
-        cursor.execute("update TOTAL_EPIDEMIC_DATA set totalNumber = %s",total_number)
-        cursor.execute('select totalNumber from TOTAL_EPIDEMIC_DATA')
-        total = cursor.fetchall()
-        print(total)
+        #更新全国概览数据
+        cursor.execute('update TOTAL_EPIDEMIC_DATA set totalNumber = %s',total_number)
+        cursor.execute('update TOTAL_EPIDEMIC_DATA set aboardNumber = %s',aboard_number)
+        cursor.execute('update TOTAL_EPIDEMIC_DATA set cureNumber = %s', cure_number)
+        cursor.execute('update TOTAL_EPIDEMIC_DATA set deathNumber = %s', death_number)
     #输出数据
         print("全国确诊"+total_number,"境外输入"+aboard_number,"治愈人数"+cure_number,"死亡人数"+death_number)
 
@@ -57,6 +57,8 @@ class GetEpidemicData:
         hongkong_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[2]').text
         hongkong_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[3]').text
         hongkong_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[4]').text
+
+
         print(taiwan_confirm,taiwan_cure,taiwan_death,hongkong_confirm,hongkong_cure,hongkong_death)
 # 实例化GetEpidemicData类
 data = GetEpidemicData()
