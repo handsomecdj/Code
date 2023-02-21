@@ -3,12 +3,13 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+
 # 实例化Selenium
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
 driver.get("https://m.111.com.cn/yyw/activities/broadcast/#/home")
-
+driver.implicitly_wait(10)
 
 '''
 连接至阿里云服务器搭建的mysql数据库
@@ -46,13 +47,19 @@ class GetEpidemicData:
         cursor.execute('update TOTAL_EPIDEMIC_DATA set cureNumber = %s', cure_number)
         cursor.execute('update TOTAL_EPIDEMIC_DATA set deathNumber = %s', death_number)
     #输出数据
-        print("全国确诊"+total_number,"境外输入"+aboard_number,"治愈人数"+cure_number,"死亡人数"+death_number)
+        print("全国确诊:"+total_number,"境外输入:"+aboard_number,"治愈人数:"+cure_number,"死亡人数:"+death_number)
 
     def get_provincial_epidemic_data(self):
     #中国台湾数据：
         taiwan_confirm = driver.find_element(By.XPATH,"/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[2]").text
         taiwan_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[3]').text
         taiwan_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[4]').text
+
+        cursor.execute('update TAIWAN set confirm = %s',taiwan_confirm)
+        cursor.execute('update TAIWAN set cure = %s',taiwan_cure)
+        cursor.execute('update TAIWAN set death = %s',taiwan_death)
+
+        print("中国台湾  确诊:"+taiwan_confirm,"治愈:"+taiwan_cure,"死亡:"+taiwan_death)
     #中国香港数据：
         hongkong_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[2]').text
         hongkong_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[3]').text
