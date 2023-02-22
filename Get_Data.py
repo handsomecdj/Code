@@ -60,13 +60,50 @@ class GetEpidemicData:
         cursor.execute('update TAIWAN set death = %s',taiwan_death)
 
         print("中国台湾  确诊:"+taiwan_confirm,"治愈:"+taiwan_cure,"死亡:"+taiwan_death)
+
     #中国香港数据：
         hongkong_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[2]').text
         hongkong_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[3]').text
         hongkong_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[4]').text
 
+        cursor.execute('update HONGKONG set confirm = %s',hongkong_confirm)
+        cursor.execute('update HONGKONG set cure = %s',hongkong_cure)
+        cursor.execute('update HONGKONG set death = %s',hongkong_death)
 
-        print(taiwan_confirm,taiwan_cure,taiwan_death,hongkong_confirm,hongkong_cure,hongkong_death)
+        print("中国香港  确诊:"+hongkong_confirm,"治愈:"+hongkong_cure,"死亡:"+hongkong_death)
+
+    # 湖北数据：
+        hubei_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[3]/div[1]/div[2]').text
+        hubei_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[3]/div[1]/div[3]').text
+        hubei_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[3]/div[1]/div[4]').text
+
+        cursor.execute('update HUBEI set confirm = %s',hubei_confirm)
+        cursor.execute('update HUBEI set cure = %s', hubei_cure)
+        cursor.execute('update HUBEI set death = %s', hubei_death)
+
+        print("湖北   确诊:"+hubei_confirm,"治愈:"+hubei_cure,"死亡:"+hubei_death)
+    # 广东数据:
+        guangdong_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[4]/div[1]/div[2]').text
+        guangdong_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[4]/div[1]/div[3]').text
+        guangdong_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[4]/div[1]/div[4]').text
+
+        cursor.execute('update GUANGDONG set confirm = %s',guangdong_confirm)
+        cursor.execute('update GUANGDONG set cure = %s', guangdong_cure)
+        cursor.execute('update GUANGDONG set death = %s', guangdong_death)
+
+        print("广东   确诊:" + guangdong_confirm, "治愈:" + guangdong_cure, "死亡:" + guangdong_death)
+
+    # 上海数据
+        shanghai_confirm = driver.find_element(By.XPATH, '/html/body/div/div/div[1]/div[7]/div[5]/div[1]/div[2]').text
+        shanghai_cure = driver.find_element(By.XPATH, '/html/body/div/div/div[1]/div[7]/div[5]/div[1]/div[3]').text
+        shanghai_death = driver.find_element(By.XPATH, '/html/body/div/div/div[1]/div[7]/div[5]/div[1]/div[4]').text
+
+        cursor.execute('update SHANGHAI set confirm = %s', shanghai_confirm)
+        cursor.execute('update SHANGHAI set cure = %s', shanghai_cure)
+        cursor.execute('update SHANGHAI set death = %s', shanghai_death)
+
+        print("上海   确诊:" + shanghai_confirm, "治愈:" + shanghai_cure, "死亡:" + shanghai_death)
+
 # 实例化GetEpidemicData类
 data = GetEpidemicData()
 data.get_domestic_epidemic_data()
