@@ -10,6 +10,8 @@ options.add_argument('--headless')
 driver = webdriver.Chrome(options=options)
 driver.get("https://m.111.com.cn/yyw/activities/broadcast/#/home")
 driver.implicitly_wait(10)
+driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[36]/strong').click()
+
 
 '''
 连接至阿里云服务器搭建的mysql数据库
@@ -25,6 +27,7 @@ try:
     select = cursor.execute("select * from TOTAL_EPIDEMIC_DATA")
     result = cursor.fetchall()
     print("DBConnectSuccessfully")
+    print("\r")
 except Exception as DBConnectError:
     print("DBConnectError")
 '''
@@ -50,7 +53,7 @@ class GetEpidemicData:
         print("全国确诊:"+total_number,"境外输入:"+aboard_number,"治愈人数:"+cure_number,"死亡人数:"+death_number)
 
     def get_provincial_epidemic_data(self):
-    #中国台湾数据：
+    # 中国台湾数据：
         taiwan_confirm = driver.find_element(By.XPATH,"/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[2]").text
         taiwan_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[3]').text
         taiwan_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[4]').text
@@ -61,7 +64,7 @@ class GetEpidemicData:
 
         print("中国台湾  确诊:"+taiwan_confirm,"治愈:"+taiwan_cure,"死亡:"+taiwan_death)
 
-    #中国香港数据：
+    # 中国香港数据：
         hongkong_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[2]').text
         hongkong_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[3]').text
         hongkong_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[4]').text
@@ -104,13 +107,85 @@ class GetEpidemicData:
 
         print("上海   确诊:" + shanghai_confirm, "治愈:" + shanghai_cure, "死亡:" + shanghai_death)
 
+    # 吉林数据
+        jilin_confirm = driver.find_element(By.XPATH, '/html/body/div/div/div[1]/div[7]/div[6]/div[1]/div[2]').text
+        jilin_cure = driver.find_element(By.XPATH, '/html/body/div/div/div[1]/div[7]/div[6]/div[1]/div[3]').text
+        jilin_death = driver.find_element(By.XPATH, '/html/body/div/div/div[1]/div[7]/div[6]/div[1]/div[4]').text
+
+        cursor.execute('update JILIN set confirm = %s',jilin_confirm)
+        cursor.execute('update JILIN set cure = %s', jilin_cure)
+        cursor.execute('update JILIN set death = %s', jilin_death)
+
+        print("吉林   确诊:" + jilin_confirm, "治愈:" + jilin_cure, "死亡:" + jilin_death)
+
+    # 北京数据:
+        beijing_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[7]/div[1]/div[2]').text
+        beijing_cure =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[7]/div[1]/div[3]').text
+        beijing_death =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[7]/div[1]/div[4]').text
+
+        cursor.execute('update BEIJING set confirm = %s',beijing_confirm)
+        cursor.execute('update BEIJING set cure = %s', beijing_cure)
+        cursor.execute('update BEIJING set death = %s', beijing_death)
+
+        print("北京   确诊:" + beijing_confirm, "治愈:" + beijing_cure, "死亡:" + beijing_death)
+
+    # 四川数据:
+        sichuan_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[8]/div[1]/div[2]').text
+        sichuan_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[8]/div[1]/div[3]').text
+        sichuan_death =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[8]/div[1]/div[4]').text
+
+        cursor.execute('update SICHUAN set confirm = %s',sichuan_confirm)
+        cursor.execute('update SICHUAN set cure = %s', sichuan_cure)
+        cursor.execute('update SICHUAN set death = %s', sichuan_death)
+
+        print("四川   确诊:" + sichuan_confirm, "治愈:" + sichuan_cure, "死亡:" + sichuan_death)
+
+    # 重庆数据:
+        chongqing_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[2]').text
+        chongqing_cure =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[3]').text
+        chongqing_death =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[4]').text
+
+        cursor.execute('update CHONGQING set confirm = %s',chongqing_confirm)
+        cursor.execute('update CHONGQING set cure = %s',chongqing_cure)
+        cursor.execute('update CHONGQING set death = %s',chongqing_death)
+
+        print("重庆   确诊:" + chongqing_confirm, "治愈:" + chongqing_cure, "死亡:" + chongqing_death)
+
+    # 海南数据:
+        hainan_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[10]/div[1]/div[2]').text
+        hainan_cure =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[10]/div[1]/div[3]').text
+        hainan_death =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[10]/div[1]/div[4]').text
+
+        cursor.execute('update HAINAN set confirm = %s',hainan_confirm)
+        cursor.execute('update HAINAN set cure = %s', hainan_cure)
+        cursor.execute('update HAINAN set death = %s', hainan_death)
+
+        print("海南   确诊:" + hainan_confirm, "治愈:" + hainan_cure, "死亡:" + hainan_death)
+
+    # 河南数据:
+        henan_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[11]/div[1]/div[2]').text
+        henan_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[11]/div[1]/div[3]').text
+        henan_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[11]/div[1]/div[4]').text
+
+        cursor.execute('update HENAN set confirm = %s',henan_confirm)
+        cursor.execute('update HENAN set cure = %s', henan_cure)
+        cursor.execute('update HENAN set death = %s', henan_death)
+
+        print("河南   确诊:" + henan_confirm, "治愈:" + henan_cure, "死亡:" + henan_death)
+
+
+print("Start to collect data------")
 # 实例化GetEpidemicData类
 data = GetEpidemicData()
 data.get_domestic_epidemic_data()
 data.get_provincial_epidemic_data()
+print("End to collect data------")
+time.sleep(1)
 
+print("\r")
+print("DataCollectSuccessfully")
 
 cursor.close()
 connection.close()
+print("DBDisconnectSuccessfully")
 
-print("DataCollectSuccessfully")
