@@ -294,6 +294,138 @@ class GetEpidemicData:
 
         print("湖南   确诊:" + hunan_confirm, "治愈:" + hunan_cure, "死亡:" + hunan_death)
 
+    # 天津数据:
+        tianjin_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[23]/div[1]/div[2]').text
+        tianjin_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[23]/div[1]/div[3]').text
+        tianjin_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[23]/div[1]/div[4]').text
+
+        cursor.execute('update TIANJIN set confirm = %s',tianjin_confirm)
+        cursor.execute('update TIANJIN set cure = %s', tianjin_cure)
+        cursor.execute('update TIANJIN set death = %s', tianjin_death)
+
+        print("天津   确诊:" + tianjin_confirm, "治愈:" + tianjin_cure, "死亡:" + tianjin_death)
+
+    # 河北数据:
+        hebei_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[24]/div[1]/div[2]').text
+        hebei_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[24]/div[1]/div[3]').text
+        hebei_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[24]/div[1]/div[4]').text
+
+        cursor.execute('update HEBEI set confirm = %s',hebei_confirm)
+        cursor.execute('update HEBEI set cure = %s', hebei_cure)
+        cursor.execute('update HEBEI set death = %s', hebei_death)
+
+        print("河北   确诊:" + hebei_confirm, "治愈:" + hebei_cure, "死亡:" + hebei_death)
+
+    # 新疆数据:
+        xinjiang_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[25]/div[1]/div[2]').text
+        xinjiang_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[25]/div[1]/div[3]').text
+        xinjiang_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[25]/div[1]/div[4]').text
+
+        cursor.execute('update XINJIANG set confirm = %s',xinjiang_confirm)
+        cursor.execute('update XINJIANG set cure = %s', xinjiang_cure)
+        cursor.execute('update XINJIANG set death = %s', xinjiang_death)
+
+        print("新疆   确诊:" + xinjiang_confirm, "治愈:" + xinjiang_cure, "死亡:" + xinjiang_death)
+
+    # 广西数据:
+        guangxi_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[26]/div[1]/div[2]').text
+        guangxi_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[26]/div[1]/div[3]').text
+        guangxi_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[26]/div[1]/div[4]').text
+
+        cursor.execute('update GUANGXI set confirm = %s',guangxi_confirm)
+        cursor.execute('update GUANGXI set cure = %s',guangxi_cure)
+        cursor.execute('update GUANGXI set death = %s',guangxi_death)
+
+        print("广西   确诊:" + guangxi_confirm, "治愈:" + guangxi_cure, "死亡:" + guangxi_death)
+
+    # 江西数据:
+        jiangxi_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[27]/div[1]/div[2]').text
+        jiangxi_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[27]/div[1]/div[3]').text
+        jiangxi_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[27]/div[1]/div[4]').text
+
+        cursor.execute('update JIANGXI set confirm = %s',jiangxi_confirm)
+        cursor.execute('update JIANGXI set cure = %s', jiangxi_cure)
+        cursor.execute('update JIANGXI set death = %s', jiangxi_death)
+
+        print("江西   确诊:" + jiangxi_confirm, "治愈:" + jiangxi_cure, "死亡:" + jiangxi_death)
+
+    # 中国澳门数据:
+        aomen_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[28]/div[1]/div[2]').text
+        aomen_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[28]/div[1]/div[3]').text
+        aomen_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[28]/div[1]/div[4]').text
+
+        cursor.execute('update AOMEN set confirm = %s',aomen_confirm)
+        cursor.execute('update AOMEN set cure = %s', aomen_cure)
+        cursor.execute('update AOMEN set death = %s', aomen_death)
+
+        print("中国澳门   确诊:" + aomen_confirm, "治愈:" + aomen_cure, "死亡:" + aomen_death)
+
+    # 贵州数据:
+        guizhou_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[29]/div[1]/div[2]').text
+        guizhou_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[29]/div[1]/div[3]').text
+        guizhou_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[29]/div[1]/div[4]').text
+
+        cursor.execute('update GUIZHOU set confirm = %s',guizhou_confirm)
+        cursor.execute('update GUIZHOU set cure = %s', guizhou_cure)
+        cursor.execute('update GUIZHOU set death = %s', guizhou_death)
+
+        print("贵州   确诊:" + guizhou_confirm, "治愈:" + guizhou_cure, "死亡:" + guizhou_death)
+
+    # 安徽数据:
+        anhui_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[30]/div[1]/div[2]').text
+        anhui_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[30]/div[1]/div[3]').text
+        anhui_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[30]/div[1]/div[4]').text
+
+        cursor.execute('update ANHUI set confirm = %s',anhui_confirm)
+        cursor.execute('update ANHUI set cure = %s', anhui_cure)
+        cursor.execute('update ANHUI set death = %s', anhui_death)
+
+        print("安徽   确诊:" + anhui_confirm, "治愈:" + anhui_cure, "死亡:" + anhui_death)
+
+    # 甘肃数据:
+        gansu_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[31]/div[1]/div[2]').text
+        gansu_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[31]/div[1]/div[3]').text
+        gansu_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[31]/div[1]/div[4]').text
+
+        cursor.execute('update GANSU set confirm = %s',gansu_confirm)
+        cursor.execute('update GANSU set cure = %s', gansu_cure)
+        cursor.execute('update GANSU set death = %s', gansu_death)
+
+        print("甘肃   确诊:" + gansu_confirm, "治愈:" + gansu_cure, "死亡:" + gansu_death)
+
+    # 西藏数据:
+        xizang_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[32]/div[1]/div[2]').text
+        xizang_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[32]/div[1]/div[3]').text
+        xizang_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[32]/div[1]/div[4]').text
+
+        cursor.execute('update XIZANG set confirm = %s',xizang_confirm)
+        cursor.execute('update XIZANG set cure = %s', xizang_cure)
+        cursor.execute('update XIZANG set death = %s', xizang_death)
+
+        print("西藏   确诊:" + xizang_confirm, "治愈:" + xizang_cure, "死亡:" + xizang_death)
+
+    # 青海数据:
+        qinghai_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[33]/div[1]/div[2]').text
+        qinghai_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[33]/div[1]/div[3]').text
+        qinghai_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[33]/div[1]/div[4]').text
+
+        cursor.execute('update QINGHAI set confirm = %s',qinghai_confirm)
+        cursor.execute('update QINGHAI set cure = %s', qinghai_cure)
+        cursor.execute('update QINGHAI set death = %s', qinghai_death)
+
+        print("青海   确诊:" + qinghai_confirm, "治愈:" + qinghai_cure, "死亡:" + qinghai_death)
+
+    # 宁夏数据:
+        ningxia_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[34]/div[1]/div[2]').text
+        ningxia_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[34]/div[1]/div[3]').text
+        ningxia_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[34]/div[1]/div[4]').text
+
+        cursor.execute('update NINGXIA set confirm = %s',ningxia_confirm)
+        cursor.execute('update NINGXIA set cure = %s', ningxia_cure)
+        cursor.execute('update NINGXIA set death = %s', ningxia_death)
+
+        print("宁夏   确诊:" + ningxia_confirm, "治愈:" + ningxia_cure, "死亡:" + ningxia_death)
+
 print("Start to collect data------")
 # # 实例化GetEpidemicData类
 data = GetEpidemicData()
