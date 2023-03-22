@@ -1,11 +1,6 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
+file = open('data.csv', 'w', encoding='utf-8', newline="")
+        csv_write = csv.writer(file)
+        csv_write.writerow(['地区','确诊','治愈','死亡'])
 
-driver = webdriver.Chrome()
-driver.get('https://m.111.com.cn/yyw/activities/broadcast/#/home')
-driver.implicitly_wait(5)
-
-death = driver.find_elements(By.XPATH,'//*[@class="widget-tab-box"]')
-
-for i in death:
-    print(i.text)
+        csv_write.writerow(['中国台湾',taiwan_confirm,taiwan_cure,taiwan_death])
+        file.close()
