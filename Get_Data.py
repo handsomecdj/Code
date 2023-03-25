@@ -1,3 +1,5 @@
+import csv
+
 import pymysql
 import time
 from selenium import webdriver
@@ -426,6 +428,49 @@ class GetEpidemicData:
 
         print("宁夏   确诊:" + ningxia_confirm, "治愈:" + ningxia_cure, "死亡:" + ningxia_death)
 
+        # 将爬取的数据写入csv文件内:
+        file = open('data.csv', 'w', encoding='utf-8', newline="")
+        csv_write = csv.writer(file)
+        # 写入csv表头
+        csv_write.writerow(['地区', '确诊', '治愈', '死亡'])
+        # 写入csv具体数据
+        csv_write.writerow(['台湾省', taiwan_confirm, taiwan_cure, taiwan_death])
+        csv_write.writerow(['香港特别行政区', hongkong_confirm, hongkong_cure, hongkong_death])
+        csv_write.writerow(['湖北省', hubei_confirm, hubei_cure, hubei_death])
+        csv_write.writerow(['广东省', guangdong_confirm, guangdong_cure, guangdong_death])
+        csv_write.writerow(['上海市', shanghai_confirm, shanghai_cure, shanghai_death])
+        csv_write.writerow(['吉林省', jilin_confirm, jilin_cure, jilin_death])
+        csv_write.writerow(['北京市', beijing_confirm, beijing_cure, beijing_death])
+        csv_write.writerow(['四川省', sichuan_confirm, sichuan_cure, sichuan_death])
+        csv_write.writerow(['重庆省', chongqing_confirm, chongqing_cure, chongqing_death])
+        csv_write.writerow(['海南省', hainan_confirm, hainan_cure, hainan_death])
+        csv_write.writerow(['河南省', henan_confirm, henan_cure, henan_death])
+        csv_write.writerow(['福建省', fujian_confirm, fujian_cure, fujian_death])
+        csv_write.writerow(['内蒙古自治区', neimenggu_confirm, neimenggu_cure, neimenggu_death])
+        csv_write.writerow(['浙江省', zhejiang_confirm, zhejiang_cure, zhejiang_death])
+        csv_write.writerow(['云南省', yunnan_confirm, yunnan_cure, yunnan_death])
+        csv_write.writerow(['陕西省', shanxi_west_confirm, shanxi_west_cure, shanxi_west_death])
+        csv_write.writerow(['黑龙江省', heilongjiang_confirm, heilongjiang_cure, heilongjiang_death])
+        csv_write.writerow(['山西省', shanxi_north_confirm, shanxi_north_cure, shanxi_north_death])
+        csv_write.writerow(['山东省', shandong_confirm, shandong_cure, shandong_death])
+        csv_write.writerow(['江苏省', jiangsu_confirm, jiangsu_cure, jiangsu_death])
+        csv_write.writerow(['辽宁省', liaoning_confirm, liaoning_cure, liaoning_death])
+        csv_write.writerow(['湖南省', hunan_confirm, hunan_cure, hunan_death])
+        csv_write.writerow(['天津市', tianjin_confirm, tianjin_cure, tianjin_death])
+        csv_write.writerow(['河北省', hebei_confirm, hebei_cure, hebei_death])
+        csv_write.writerow(['新疆维吾尔自治区', xinjiang_confirm, xinjiang_cure, xinjiang_death])
+        csv_write.writerow(['广西壮族自治区', guangxi_confirm, guangxi_cure, guangxi_death])
+        csv_write.writerow(['江西省', jiangxi_confirm, jiangxi_cure, jiangxi_death])
+        csv_write.writerow(['澳门特别行政区', aomen_confirm, aomen_cure, aomen_death])
+        csv_write.writerow(['贵州省', guizhou_confirm, guizhou_cure, guizhou_death])
+        csv_write.writerow(['安徽省', anhui_confirm, anhui_cure, anhui_death])
+        csv_write.writerow(['甘肃省', gansu_confirm, gansu_cure, gansu_death])
+        csv_write.writerow(['西藏自治区', xizang_confirm, xizang_cure, xizang_death])
+        csv_write.writerow(['青海省', qinghai_confirm, qinghai_cure, qinghai_death])
+        csv_write.writerow(['宁夏回族自治区', ningxia_confirm, ningxia_cure, ningxia_death])
+        csv_write.writerow(['重庆市', chongqing_confirm, chongqing_cure, chongqing_death])
+        file.close()
+
 print("Start to collect data------")
 # # 实例化GetEpidemicData类
 data = GetEpidemicData()
@@ -441,4 +486,3 @@ print("\r")
 cursor.close()
 connection.close()
 print("DBDisconnectSuccessfully")
-
