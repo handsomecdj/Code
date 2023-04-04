@@ -60,11 +60,12 @@ class GetEpidemicData:
         taiwan_cure = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[3]').text
         taiwan_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[1]/div[1]/div[4]').text
 
+
         cursor.execute('update TAIWAN set confirm = %s',taiwan_confirm)
         cursor.execute('update TAIWAN set cure = %s',taiwan_cure)
         cursor.execute('update TAIWAN set death = %s',taiwan_death)
 
-        print("中国台湾  确诊:"+taiwan_confirm,"治愈:"+taiwan_cure,"死亡:"+taiwan_death)
+        print("中国台湾  确诊:"+taiwan_confirm, "治愈:"+taiwan_cure, "死亡:"+taiwan_death)
 
     # 中国香港数据：
         hongkong_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[2]/div[1]/div[2]').text
@@ -145,7 +146,7 @@ class GetEpidemicData:
     # 重庆数据:
         chongqing_confirm = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[2]').text
         chongqing_cure =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[3]').text
-        chongqing_death =  driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[4]').text
+        chongqing_death = driver.find_element(By.XPATH,'/html/body/div/div/div[1]/div[7]/div[9]/div[1]/div[4]').text
 
         cursor.execute('update CHONGQING set confirm = %s',chongqing_confirm)
         cursor.execute('update CHONGQING set cure = %s',chongqing_cure)
